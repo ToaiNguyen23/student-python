@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% block title %}Home Change{% endblock %}
+{% block content %}
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}"> -->
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+<div style="margin-top:70px" class="container">
+    <a href="/addstudent"><input type="submit" name="Add Student" class="btn btn-info btn-md" value="Add Student"></a>
+    <table style="margin-top:30px" class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Numberphone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <th scope="row">{{student.id}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.address}}</td>
+                <td>{{student.numberphone}}</td>
+                <td>{{student.gmailaddress}}</td>
+                <td><a href="/update/{{student.id}}"><span class="iconify" data-icon="clarity:edit-solid" data-inline="false"></span></a><a style="margin-left:10px" href="/delete/{{student.id}}"><span class="iconify" data-icon="iwwa:delete" data-inline="false"></span></a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
